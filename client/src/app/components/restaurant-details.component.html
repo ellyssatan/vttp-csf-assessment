@@ -1,1 +1,16 @@
-<p>restaurant-details works!</p>
+<h2>Name: {{ restaurant.name }}</h2>
+<h2>Cuisine: {{ restaurant.cuisine }}</h2>
+<h2>Address: {{ restaurant.address }}</h2>
+
+
+
+
+<form [formGroup]="form" (ngSubmit)="submitComment()">
+    <h3>Comment</h3>
+    <label for="name">Name: </label>
+    <input type="text" formArrayName="name">
+    <label for="name">Rating: </label>
+    <input type="number" formArrayName="rating">
+    <textarea cols="30" rows="10" formControlName="text" placeholder="Type comment here"></textarea>
+    <button type="submit" [disabled]="form.invalid"></button>
+</form>

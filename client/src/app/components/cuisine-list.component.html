@@ -1,1 +1,14 @@
-<p>cuisine-list works!</p>
+<h1>List of Cuisines</h1>
+<div>
+    <!-- <a *ngFor="let c of cuisines">
+        {{ c }}
+    </a> -->
+
+    <ul>
+        <li *ngFor="let c of cuisines">
+          <h4>{{ c.toString }}</h4>
+        </li>
+      </ul>
+</div>
+
+<!-- [routerLink]="[c, 'restaurants']" -->
