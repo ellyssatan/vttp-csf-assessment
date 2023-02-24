@@ -7,7 +7,6 @@ import { Restaurant, Comment } from './models'
 export class RestaurantService {
 
 	constructor(private http : HttpClient) {}
-	BACKEND_API_URL = "http://localhost:8080";
 
 	// TODO Task 2 
 	// Use the following method to get a list of cuisines
@@ -17,7 +16,7 @@ export class RestaurantService {
 		// Implememntation in here
 
 		console.log('>>>> requesting for cuisine list')
-		return firstValueFrom(this.http.get<string[]>(`${this.BACKEND_API_URL}/api/cuisines`));
+		return firstValueFrom(this.http.get<string[]>('/api/cuisines'));
 	}
 
 	// TODO Task 3 
@@ -27,7 +26,7 @@ export class RestaurantService {
 	public getRestaurantsByCuisine(cuisine : string) : Promise<any> {
 		// Implememntation in here
 		console.log('>>>> svc requesting for restaurant list')
-		return firstValueFrom(this.http.get<any>(`${this.BACKEND_API_URL}/api/${cuisine}/restaurants`));
+		return firstValueFrom(this.http.get<any>(`/api/${cuisine}/restaurants`));
 	}
 	
 	// TODO Task 4
@@ -42,7 +41,7 @@ export class RestaurantService {
 		.set("lng", cood[0]);
 		
 		return firstValueFrom(
-			this.http.post<Restaurant>(`${this.BACKEND_API_URL}/map`, { params : params })
+			this.http.post<Restaurant>('/map', { params : params })
 		)
 		
 	}
@@ -54,7 +53,7 @@ export class RestaurantService {
 		// Implememntation in here
 
 		return firstValueFrom(
-			this.http.post<Restaurant>(`${this.BACKEND_API_URL}/maps`, comment)
+			this.http.post<Restaurant>('/api/comments', comment)
 		)
 	}
 }
